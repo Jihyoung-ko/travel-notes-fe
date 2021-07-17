@@ -1,5 +1,6 @@
-import React, {Component
-} from "react";
+import React, {Component} from "react";
+import Header from "../components/Header";
+
 class NewAlbum extends Component {
   constructor(props){
     super(props);
@@ -27,7 +28,7 @@ class NewAlbum extends Component {
     const { title, startDate, endDate, photo } = this.state;
     return(
       <div>
-        <p>Upper Navbar here</p>
+        <Header edit={true} title="New Album"/>
         <form onSubmit={this.handleSubmit}>
           <input type="text" name="title" value={title} onChange={this.handleChange} placeholder="Trip name" />
           <input type="date" name="startDate" value={startDate} onChange={this.handleChange} placeholder="Start Date" />

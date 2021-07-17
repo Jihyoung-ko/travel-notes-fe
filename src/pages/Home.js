@@ -6,20 +6,31 @@ import apiClient from "../lib/apiClient";
 import { withAuth } from '../providers/AuthProvider';
 import AlbumItem from "../components/AlbumItem";
 import NavbarDown from "../components/NavbarDown";
+import Header from "../components/Header";
 
 
 class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      albums: []
+    }
+  }
 
   async componentDidMount() {
     const albums = await apiClient.getAlbums();
     console.log(albums);
+    this.setState({ 
+      albums,
+    })
   }
 
   render() {
-    const { albums, user } = this.props;
+    const { user } = this.props;
+    const { albums } = this.state;
     return (
       <div>
-        <h1>{user.username}´s Album</h1>
+        <Header title={`${user.username}'s Album`} />
         {albums.map(album => {
           return <div key={album._id}><Link to={`album/${album._id}`}> <AlbumItem  album={album} /> </Link></div>
         })}

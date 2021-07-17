@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, {Component} from "react";
+import Header from "../components/Header";
 
 class NewArticle extends Component {
   constructor(props){
@@ -36,7 +37,7 @@ class NewArticle extends Component {
     const { note, photo, place, people } = this.state;
     return(
       <div>
-        <p>Upper Navbar here</p>
+        <Header edit={true} title="New Article"/>
         <form onSubmit={this.handleSubmit}>
           <input type="text" name="note" value={note} onChange={this.handleChange} placeholder="Write a note..." />
           <input type="text" name="photo" value={photo} onChange={this.handleChange} placeholder="Add Photo" />
