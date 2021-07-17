@@ -1,17 +1,18 @@
-import axios from "axios";
+// import axios from "axios";
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
+import apiClient from "../lib/apiClient";
 
 import { withAuth } from '../providers/AuthProvider';
 import AlbumItem from "../components/AlbumItem";
+import NavbarDown from "../components/NavbarDown";
 
 
 class Home extends Component {
 
   async componentDidMount() {
-    const res = await axios.get('http://localhost:5000/album');
-    console.log(res);
-    
+    const albums = await apiClient.getAlbums();
+    console.log(albums);
   }
 
   render() {
@@ -22,6 +23,7 @@ class Home extends Component {
         {albums.map(album => {
           return <div key={album._id}><Link to={`album/${album._id}`}> <AlbumItem  album={album} /> </Link></div>
         })}
+        <NavbarDown middlebutton={'/new-album'} middlebuttonName={"ADD"} />
       </div>
     )
   }

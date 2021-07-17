@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { withAuth } from '../providers/AuthProvider';
 import ArticleItem from "../components/ArticleItem";
+import NavbarDown from "../components/NavbarDown";
 
 class Album extends Component {
   constructor(props){
@@ -47,10 +48,10 @@ class Album extends Component {
         <h1>Album name</h1>
         <div>
           {articles.map(article => {
-            return <div key={article._id}><Link to={`article/${article._id}`}> <ArticleItem  article={article} /> </Link></div>
+            return <div key={article._id}><Link to={`/article/${article._id}`}> <ArticleItem  article={article} /> </Link></div>
           })}
         </div>
-        <div>Navbar here</div>
+        <NavbarDown middlebutton={'/new-article'} middlebuttonName={"ADD"} />
       </div>
     )
   }

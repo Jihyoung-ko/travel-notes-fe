@@ -25,6 +25,10 @@ class ApiClient {
 	logout() {
 		return this.apiClient.post('/logout', {}).then(response => response.data);
 	}
+
+	getAlbums() {
+		return this.apiClient.get('/album').then(response => response.data);
+	}
 }
 
 const apiClient = new ApiClient();
