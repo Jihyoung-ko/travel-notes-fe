@@ -1,6 +1,10 @@
 import React, {Component} from "react";
+import apiClient from "../lib/apiClient";
+
 import Header from "../components/Header";
 import NavbarDown from "../components/NavbarDown";
+import { withAuth } from '../providers/AuthProvider';
+
 
 class NewAlbum extends Component {
   constructor(props){
@@ -10,13 +14,15 @@ class NewAlbum extends Component {
       startDate:"",
       endDate:"",
       photo:"",
-      user:"",
+      user:this.props.user._id,
     }
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
     console.log(this.state)
+    await apiClient.addNewAlbum(this.state);
+
   }
 
   handleChange = (e) => {
@@ -35,6 +41,7 @@ class NewAlbum extends Component {
           <input type="date" name="startDate" value={startDate} onChange={this.handleChange} placeholder="Start Date" />
           <input type="date" name="endDate" value={endDate} onChange={this.handleChange} placeholder="End Date" />
           <input type="text" name="photo" value={photo} onChange={this.handleChange} placeholder="Add photo" />
+          <button>Save</button>
         </form>
         <NavbarDown />
       </div>
@@ -43,4 +50,4 @@ class NewAlbum extends Component {
   }
 }
 
-export default NewAlbum;
+export default withAuth(NewAlbum);

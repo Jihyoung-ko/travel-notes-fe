@@ -46,8 +46,12 @@ class ApiClient {
 		return this.apiClient.get('/article').then(response => response.data);
 	}
 
+	addNewAlbum(album) {
+		return this.apiClient.post('/album', album).then(response => response.data);
+	}
+
 	addNewArticle(article) {
-		return this.apiClient.post('/article', article).then(({ data }) => data);
+		return this.apiClient.post('/article', article).then(response=> response.data);
 	}
 }
 
