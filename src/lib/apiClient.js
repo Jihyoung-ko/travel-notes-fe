@@ -45,6 +45,10 @@ class ApiClient {
 	getAllArticles() {
 		return this.apiClient.get('/article').then(response => response.data);
 	}
+
+	addNewArticle(article) {
+		return this.apiClient.post('/article', article).then(({ data }) => data);
+	}
 }
 
 const apiClient = new ApiClient();

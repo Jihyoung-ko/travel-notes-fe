@@ -1,28 +1,33 @@
 import React, { Component } from 'react';
+import ArticleItem from '../components/ArticleItem';
+import NavbarDown from '../components/NavbarDown';
 import apiClient from "../lib/apiClient";
 
 class Search extends Component {
   constructor(props){
     super(props);
     this.state={
-      albums: [],
       articles: [],
-      filtered:[]
+      filtered:[],
     }
   }
 
-
   async componentDidMount() {
-    const data = await apiClient.getAllArticles();
-    console.log(data);
+    console.log(this.props);
+    const articles = await apiClient.getAllArticles();
     this.setState({
-      albums: data[0],
-      articles: data[1]
+      articles,
     })
   }
-  
-  searchHandler() {
 
+  searchHandler = (e) => {
+    const { articles } = this.state;
+    const { value } = e.target;
+    let filteredArticle = [];
+    (value ? filteredArticle = articles.filter(article => article.note.includes(value)) : filteredArticle = [] );
+
+    this.setState({
+      filtered: filteredArticle})
   }
 
   goBack = () => {
@@ -30,11 +35,20 @@ class Search extends Component {
   }
 
   render() {
+    const { filtered } = this.state;
     return(
       <div>
-        <input type="text"  placeholder="Search..." onChange={this.searchHandler}/>
-        <button onClick={this.goBack}>X</button>
+        <form>
+          <input type="text"  placeholder="Search..." onChange={this.searchHandler}/>
+          <button onClick={this.goBack}>X</button>
+        </form>
+        <div>
+
+          { filtered !== [] ? filtered.map(article => <ArticleItem  key={article.id} article={article} />) : <p>Nothing found</p> }
+        </div>
+        <NavbarDown />
       </div>
+      
     )
   }
 }

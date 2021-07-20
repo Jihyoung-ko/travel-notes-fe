@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import Header from "../components/Header";
+import NavbarDown from "../components/NavbarDown";
 
 class NewAlbum extends Component {
   constructor(props){
@@ -35,6 +36,7 @@ class NewAlbum extends Component {
           <input type="date" name="endDate" value={endDate} onChange={this.handleChange} placeholder="End Date" />
           <input type="text" name="photo" value={photo} onChange={this.handleChange} placeholder="Add photo" />
         </form>
+        <NavbarDown />
       </div>
       
     )

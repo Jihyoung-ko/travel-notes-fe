@@ -1,6 +1,9 @@
-import axios from "axios";
+
 import React, {Component} from "react";
+import apiClient from "../lib/apiClient";
+
 import Header from "../components/Header";
+import NavbarDown from "../components/NavbarDown";
 
 class NewArticle extends Component {
   constructor(props){
@@ -14,17 +17,17 @@ class NewArticle extends Component {
     }
   }
 
-   handleSubmit = (e) => {
+   handleSubmit = async (e) => {
     e.preventDefault(); 
     console.log(this.state);
-    axios.post('http://localhost:5000/article', this.state)
-      .then(res => this.setState({
+    await apiClient.addNewArticle(this.state);
+    this.setState({
         note:"",
         photo:"",
         place:"",
         people:"",
         album:"",
-      }))   
+      })   
   }
 
   handleChange = (e) => {
@@ -45,6 +48,7 @@ class NewArticle extends Component {
           <input type="text" name="people" value={people} onChange={this.handleChange} placeholder="Add People" />
           <button>Save</button>
         </form>
+        <NavbarDown />
       </div>
       
     )

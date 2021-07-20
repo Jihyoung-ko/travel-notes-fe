@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import apiClient from '../lib/apiClient';
 import Header from '../components/Header';
+import NavbarDown from '../components/NavbarDown';
 
 class EditArticle extends Component {
   constructor(props){
@@ -19,6 +20,7 @@ class EditArticle extends Component {
   }
 
   handelChange = (e) => {
+    console.log(this.state)
     this.setState({
      article:{
       [e.target.name]: e.target.value
@@ -29,13 +31,17 @@ class EditArticle extends Component {
   render(){
     const { photo, note, place,  people } = this.state.article;
     return (
-    <form>
-      <Header edit={true} title="Album name" />
-      <div>{photo}Photo here</div>
-      <input type="text" name="note" value={note} onChange={this.handelChange}/>
-      <input type="text" name="place" value={place} onChange={this.handelChange}/>
-      <input type="text" name="people" value={people} onChange={this.handelChange}/>
-    </form>
+      <div>
+        <Header edit={true} title="Album name" />
+        <form>
+          <div>{photo}Photo here</div>
+          <input type="text" name="note" value={note} onChange={this.handelChange}/>
+          <input type="text" name="place" value={place} onChange={this.handelChange}/>
+          <input type="text" name="people" value={people} onChange={this.handelChange}/>
+        </form>
+        <NavbarDown />
+      </div>
+    
   )
   }
   
