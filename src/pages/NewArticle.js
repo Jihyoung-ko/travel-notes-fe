@@ -21,9 +21,11 @@ class NewArticle extends Component {
   }
 
    handleSubmit = async (e) => {
+    const { id } = this.props.match.params;
     e.preventDefault(); 
     console.log(this.state);
     await apiClient.addNewArticle(this.state);
+    this.props.history.push(`/album/${id}`);
   }
 
   handleChange = (e) => {

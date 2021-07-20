@@ -20,9 +20,8 @@ class NewAlbum extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(this.state)
     await apiClient.addNewAlbum(this.state);
-
+    this.props.history.push('/home');
   }
 
   handleChange = (e) => {

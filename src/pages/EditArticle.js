@@ -17,12 +17,12 @@ class EditArticle extends Component {
   async componentDidMount() {
     const { id } = this.props.match.params;
     const article = await apiClient.getArticle(id);
-    console.log(article);
+    const { photo, note, location, people } = article;
     this.setState({
-      photo: article.photo,
-      note: article.note,
-      location: article.location,
-      people:article.people
+      photo,
+      note,
+      location,
+      people
     })
   }
 
@@ -30,6 +30,7 @@ class EditArticle extends Component {
     const { id } = this.props.match.params;
     e.preventDefault(); 
     await apiClient.editArticle(id, this.state);
+    this.props.history.push(`/article/${id}`);
   }
 
   handelChange = (e) => {
@@ -52,7 +53,6 @@ class EditArticle extends Component {
         </form>
         <NavbarDown />
       </div>
-    
   )
   }
   

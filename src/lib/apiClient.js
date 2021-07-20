@@ -55,7 +55,6 @@ class ApiClient {
 	}
 
 	editArticle(id, article) {
-		console.log('enter here')
 		return this.apiClient.put(`article/${id}`, article).then(response => response.data);
 	}
 }
