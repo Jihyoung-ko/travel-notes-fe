@@ -38,6 +38,7 @@ class NewArticle extends Component {
 
   render(){
     const { note, photo, place, people } = this.state;
+    console.log(this.props);
     return(
       <div>
         <Header edit={true} title="New Article"/>
