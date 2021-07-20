@@ -40,7 +40,7 @@ class Album extends Component {
             return <div key={article._id}><Link to={`/article/${article._id}`}> <ArticleItem  article={article} /> </Link></div>
           })}
         </div>
-        <NavbarDown middlebutton={'/new-article'} middlebuttonName={"ADD"} />
+        <NavbarDown middlebutton={`/album/${id}/new-article`} middlebuttonName={"ADD"} />
       </div>
     )
   }

@@ -51,7 +51,12 @@ class ApiClient {
 	}
 
 	addNewArticle(article) {
-		return this.apiClient.post('/article', article).then(response=> response.data);
+		return this.apiClient.post('/article', article).then(response => response.data);
+	}
+
+	editArticle(id, article) {
+		console.log('enter here')
+		return this.apiClient.put(`article/${id}`, article).then(response => response.data);
 	}
 }
 

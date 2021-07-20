@@ -4,16 +4,19 @@ import apiClient from "../lib/apiClient";
 
 import Header from "../components/Header";
 import NavbarDown from "../components/NavbarDown";
+import { withAuth } from '../providers/AuthProvider';
+
 
 class NewArticle extends Component {
   constructor(props){
     super(props);
+    const { id } = this.props.match.params;
     this.state = {
       note:"",
       photo:"",
-      place:"",
+      location:"",
       people:"",
-      album:"",
+      album: id.toString(),
     }
   }
 
@@ -21,13 +24,6 @@ class NewArticle extends Component {
     e.preventDefault(); 
     console.log(this.state);
     await apiClient.addNewArticle(this.state);
-    this.setState({
-        note:"",
-        photo:"",
-        place:"",
-        people:"",
-        album:"",
-      })   
   }
 
   handleChange = (e) => {
@@ -37,15 +33,15 @@ class NewArticle extends Component {
   }
 
   render(){
-    const { note, photo, place, people } = this.state;
-    console.log(this.props);
+    const { note, photo, location, people } = this.state;
+  
     return(
       <div>
         <Header edit={true} title="New Article"/>
         <form onSubmit={this.handleSubmit}>
           <input type="text" name="note" value={note} onChange={this.handleChange} placeholder="Write a note..." />
           <input type="text" name="photo" value={photo} onChange={this.handleChange} placeholder="Add Photo" />
-          <input type="text" name="place" value={place} onChange={this.handleChange} placeholder="Add Place" />
+          <input type="text" name="location" value={location} onChange={this.handleChange} placeholder="Add Place" />
           <input type="text" name="people" value={people} onChange={this.handleChange} placeholder="Add People" />
           <button>Save</button>
         </form>
@@ -56,4 +52,4 @@ class NewArticle extends Component {
   }
 }
 
-export default NewArticle;
+export default withAuth(NewArticle);

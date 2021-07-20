@@ -7,37 +7,48 @@ class EditArticle extends Component {
   constructor(props){
     super(props);
     this.state = {
-      article:{}
+      photo:"",
+      note:"",
+      location:"",
+      people:""
     }
   }
 
   async componentDidMount() {
     const { id } = this.props.match.params;
     const article = await apiClient.getArticle(id);
+    console.log(article);
     this.setState({
-      article,
+      photo: article.photo,
+      note: article.note,
+      location: article.location,
+      people:article.people
     })
   }
 
+   handleSubmit = async (e) => {
+    const { id } = this.props.match.params;
+    e.preventDefault(); 
+    await apiClient.editArticle(id, this.state);
+  }
+
   handelChange = (e) => {
-    console.log(this.state)
     this.setState({
-     article:{
       [e.target.name]: e.target.value
-     } 
     })
   }
 
   render(){
-    const { photo, note, place,  people } = this.state.article;
+    const { photo, note, location,  people } = this.state;
     return (
       <div>
         <Header edit={true} title="Album name" />
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <div>{photo}Photo here</div>
           <input type="text" name="note" value={note} onChange={this.handelChange}/>
-          <input type="text" name="place" value={place} onChange={this.handelChange}/>
+          <input type="text" name="location" value={location} onChange={this.handelChange}/>
           <input type="text" name="people" value={people} onChange={this.handelChange}/>
+          <button>Save</button>
         </form>
         <NavbarDown />
       </div>

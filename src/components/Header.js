@@ -9,7 +9,7 @@ const Header = (props) => {
     <div>
       {edit && <button onClick={() => history.goBack()}>CANCEL</button> }
       <div>{title}</div>
-      {edit && <button >SAVE</button> }
+      
     </div>
   )
 }
