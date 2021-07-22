@@ -7,35 +7,41 @@ class Article extends Component {
   constructor(props){
     super(props);
     this.state = {
-      article:{}
+      album: {},
+      article: {}
     }
   }
 
   async componentDidMount() {
-    const { id } = this.props.match.params;
-    const article = await apiClient.getArticle(id);
+    console.log(this.props.match);
+    const { albumId, articleId } = this.props.match.params;
+    const data = await apiClient.getAlbumAndArticle(albumId,articleId);
+    console.log(data[0], data[1])
     this.setState({
-      article,
+      album: data[0],
+      article: data[1]
     })
   }
 
   deleteArticleHandler = async () => {
-    const { id } = this.props.match.params;
-    await apiClient.deleteArticle(id);
-    this.props.history.push('/home');
+    const { albumId, articleId } = this.props.match.params;
+    await apiClient.deleteArticle(articleId);
+    this.props.history.push(`/album/${albumId}`);
 
   }
 
   render(){
+    const { album } = this.state;
     const { photo, note, location, time, people } = this.state.article;
-    const { id } = this.props.match.params;
+    const { articleId } = this.props.match.params;
+
     return (
     <div>
-      <Header title="Album name" onDelete={this.deleteArticleHandler} />
+      <Header title={album.title} onDelete={this.deleteArticleHandler} />
       <div>{photo}Photo here</div>
       <div>{note}</div>
       <div>{location}{time}{people}</div>
-      <NavbarDown middlebutton={`/${id}/edit`} middlebuttonName={"EDIT"}/>
+      <NavbarDown middlebutton={`/${articleId}/edit`} middlebuttonName={"EDIT"}/>
     </div>
   )
   }

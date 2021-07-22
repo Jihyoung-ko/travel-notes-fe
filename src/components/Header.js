@@ -12,7 +12,7 @@ const Header = (props) => {
   return (
     <div>
       {edit ? <button onClick={() => history.goBack()}>CANCEL</button> : <button onClick={onDelete} >DELETE</button> }
-      <div>{title}</div>
+      <h2>{title}</h2>
       
     </div>
   )

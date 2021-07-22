@@ -41,7 +41,7 @@ class Search extends Component {
         </form>
         <div>
 
-          { filtered !== [] ? filtered.map(article => <Link to={`/article/${article._id}`} key={article.id}><ArticleItem   article={article} /> </Link>) : <p>Nothing found</p> }
+          { filtered !== [] ? filtered.map(article => <Link to={`/album/${article.album}/article/${article._id}`} key={article.id}><ArticleItem   article={article} /> </Link>) : <p>Nothing found</p> }
         </div>
         <NavbarDown />
       </div>

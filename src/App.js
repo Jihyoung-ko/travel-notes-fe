@@ -29,7 +29,7 @@ class App extends Component {
 					<AnonRoute path="/login" component={Login} />
 					<PrivateRoute path="/home" component={Home}/>
 					<PrivateRoute exact path="/album/:id" component={Album} />
-					<PrivateRoute path="/article/:id" component={Article} />
+					<PrivateRoute path="/album/:albumId/article/:articleId" component={Article} />
 					<PrivateRoute path="/new-album" component={NewAlbum} />
 					<PrivateRoute exact path="/album/:id/new-article" component={NewArticle} />
 					<PrivateRoute path="/search" component={Search} />

@@ -29,17 +29,25 @@ class ApiClient {
 	getAlbums() {
 		return this.apiClient.get('/album').then(response => response.data);
 	}
+
+	getAlbum(id) {
+		return this.apiClient.get(`/album/${id}/detail`).then(response => response.data);
+	}
 	
 	getArticles(id) {
 		return this.apiClient.get(`/album/${id}`).then(response => response.data);
 	}
 
-	getAlbumsAndArticles(id) {
-		return Promise.all([this.getAlbums(), this.getArticles(id)]);
+	getAlbumAndArticles(id) {
+		return Promise.all([this.getAlbum(id), this.getArticles(id)]);
 	}
 
 	getArticle(id) {
 		return this.apiClient.get(`/article/${id}`).then(response => response.data);
+	}
+
+	getAlbumAndArticle(albumId, articleId) {
+		return Promise.all([this.getAlbum(albumId), this.getArticle(articleId)]);
 	}
 
 	getAllArticles() {

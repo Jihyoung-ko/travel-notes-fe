@@ -11,16 +11,17 @@ class Album extends Component {
   constructor(props){
     super(props);
     this.state = {
-      albums: [],
+      album: {},
       articles: []
     }
   }    
 
   async componentDidMount() {
     const { id } = this.props.match.params;
-    const data = await apiClient.getAlbumsAndArticles(id);
+    const data = await apiClient.getAlbumAndArticles(id);
+    console.log('album', data[0], 'articles', data[1])
     this.setState({
-      albums: data[0],
+      album: data[0],
       articles: data[1]
     })
   }
@@ -33,18 +34,16 @@ class Album extends Component {
   }
     
   render() {
-    const {  albums, articles } = this.state;
+    const { album, articles } = this.state;
     const { id } = this.props.match.params;
-    const currentAlbum = albums.find(album => album._id === id)
-    console.log(currentAlbum);
+    
     
     return(
       <div>
-        <Header title="Album name" onDelete={this.deleteAlbumHandler} />
-        {/* <h1>{currentAlbum.title}</h1> */}
+        <Header title={ album.title } onDelete={this.deleteAlbumHandler} />
         <div>
           {articles.map(article => {
-            return <div key={article._id}><Link to={`/article/${article._id}`}> <ArticleItem  article={article} /> </Link></div>
+            return <div key={article._id}><Link to={`/album/${id}/article/${article._id}`}> <ArticleItem  article={article} /> </Link></div>
           })}
         </div>
         <NavbarDown middlebutton={`/album/${id}/new-article`} middlebuttonName={"ADD"} />
