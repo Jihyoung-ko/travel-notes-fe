@@ -24,6 +24,13 @@ class Album extends Component {
       articles: data[1]
     })
   }
+
+  deleteAlbumHandler = async () => {
+    const { id } = this.props.match.params;
+    await apiClient.deleteAlbum(id);
+    this.props.history.push('/home');
+
+  }
     
   render() {
     const {  albums, articles } = this.state;
@@ -33,7 +40,7 @@ class Album extends Component {
     
     return(
       <div>
-        <Header title="Album name"/>
+        <Header title="Album name" onDelete={this.deleteAlbumHandler} />
         {/* <h1>{currentAlbum.title}</h1> */}
         <div>
           {articles.map(article => {

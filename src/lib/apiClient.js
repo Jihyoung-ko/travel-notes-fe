@@ -55,7 +55,15 @@ class ApiClient {
 	}
 
 	editArticle(id, article) {
-		return this.apiClient.put(`article/${id}`, article).then(response => response.data);
+		return this.apiClient.put(`/article/${id}`, article).then(response => response.data);
+	}
+
+	deleteAlbum(id) {
+		return this.apiClient.delete(`/album/${id}`).then(response =>response.data);
+	}
+
+	deleteArticle(id) {
+		return this.apiClient.delete(`/article/${id}`).then(response =>response.data);
 	}
 }
 

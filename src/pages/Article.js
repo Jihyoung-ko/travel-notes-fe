@@ -19,12 +19,19 @@ class Article extends Component {
     })
   }
 
+  deleteArticleHandler = async () => {
+    const { id } = this.props.match.params;
+    await apiClient.deleteArticle(id);
+    this.props.history.push('/home');
+
+  }
+
   render(){
     const { photo, note, location, time, people } = this.state.article;
     const { id } = this.props.match.params;
     return (
     <div>
-      <Header title="Album name"/>
+      <Header title="Album name" onDelete={this.deleteArticleHandler} />
       <div>{photo}Photo here</div>
       <div>{note}</div>
       <div>{location}{time}{people}</div>
