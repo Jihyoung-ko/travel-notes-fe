@@ -14,6 +14,7 @@ import NewAlbum from './pages/NewAlbum';
 import NewArticle from './pages/NewArticle';
 import Search from './pages/Search';
 import EditArticle from './pages/EditArticle';
+import EditAlbum from './pages/EditAlbum';
 
 class App extends Component {
 	render() {
@@ -28,12 +29,13 @@ class App extends Component {
 					<AnonRoute path="/signup" component={Signup} />
 					<AnonRoute path="/login" component={Login} />
 					<PrivateRoute path="/home" component={Home}/>
-					<PrivateRoute exact path="/album/:id" component={Album} />
+					<PrivateRoute exact path="/album/:albumId/article/:articleId/edit" component={EditArticle} />
 					<PrivateRoute path="/album/:albumId/article/:articleId" component={Article} />
-					<PrivateRoute path="/new-album" component={NewAlbum} />
 					<PrivateRoute exact path="/album/:id/new-article" component={NewArticle} />
+					<PrivateRoute exact path="/album/:id/edit" component={EditAlbum} />
+					<PrivateRoute exact path="/album/:id" component={Album} />
+					<PrivateRoute path="/new-album" component={NewAlbum} />
 					<PrivateRoute path="/search" component={Search} />
-					<PrivateRoute path="/:id/edit" component={EditArticle} />
 				</Switch>
 			</div>
 		);

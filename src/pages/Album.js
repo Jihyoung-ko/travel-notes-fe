@@ -19,7 +19,6 @@ class Album extends Component {
   async componentDidMount() {
     const { id } = this.props.match.params;
     const data = await apiClient.getAlbumAndArticles(id);
-    console.log('album', data[0], 'articles', data[1])
     this.setState({
       album: data[0],
       articles: data[1]

@@ -7,6 +7,7 @@ class EditArticle extends Component {
   constructor(props){
     super(props);
     this.state = {
+      album: {},
       photo:"",
       note:"",
       location:"",
@@ -15,10 +16,11 @@ class EditArticle extends Component {
   }
 
   async componentDidMount() {
-    const { id } = this.props.match.params;
-    const article = await apiClient.getArticle(id);
-    const { photo, note, location, people } = article;
+    const { albumId, articleId } = this.props.match.params;
+    const data = await apiClient.getAlbumAndArticle(albumId,articleId);
+    const { photo, note, location, people } = data[1];
     this.setState({
+      album: data[0],
       photo,
       note,
       location,
@@ -27,10 +29,10 @@ class EditArticle extends Component {
   }
 
    handleSubmit = async (e) => {
-    const { id } = this.props.match.params;
+    const { albumId, articleId } = this.props.match.params;
     e.preventDefault(); 
-    await apiClient.editArticle(id, this.state);
-    this.props.history.push(`/article/${id}`);
+    await apiClient.editArticle(articleId, this.state);
+    this.props.history.push(`/album/${albumId}/article/${articleId}`);
   }
 
   handelChange = (e) => {
@@ -40,10 +42,10 @@ class EditArticle extends Component {
   }
 
   render(){
-    const { photo, note, location,  people } = this.state;
+    const { album, photo, note, location,  people } = this.state;
     return (
       <div>
-        <Header edit={true} title="Album name" />
+        <Header edit={true} title={album.title} />
         <form onSubmit={this.handleSubmit}>
           <div>{photo}Photo here</div>
           <input type="text" name="note" value={note} onChange={this.handelChange}/>

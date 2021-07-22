@@ -13,10 +13,9 @@ class Article extends Component {
   }
 
   async componentDidMount() {
-    console.log(this.props.match);
     const { albumId, articleId } = this.props.match.params;
     const data = await apiClient.getAlbumAndArticle(albumId,articleId);
-    console.log(data[0], data[1])
+    console.log('Album:',data[0], 'Article:', data[1])
     this.setState({
       album: data[0],
       article: data[1]
@@ -33,7 +32,7 @@ class Article extends Component {
   render(){
     const { album } = this.state;
     const { photo, note, location, time, people } = this.state.article;
-    const { articleId } = this.props.match.params;
+    const { albumId, articleId } = this.props.match.params;
 
     return (
     <div>
@@ -41,7 +40,7 @@ class Article extends Component {
       <div>{photo}Photo here</div>
       <div>{note}</div>
       <div>{location}{time}{people}</div>
-      <NavbarDown middlebutton={`/${articleId}/edit`} middlebuttonName={"EDIT"}/>
+      <NavbarDown middlebutton={`/album/${albumId}/article/${articleId}/edit`} middlebuttonName={"EDIT"}/>
     </div>
   )
   }

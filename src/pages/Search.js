@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import ArticleItem from '../components/ArticleItem';
-import NavbarDown from '../components/NavbarDown';
 import apiClient from "../lib/apiClient";
 import Header from '../components/Header';
 
@@ -25,7 +24,7 @@ class Search extends Component {
     const { articles } = this.state;
     const { value } = e.target;
     let filteredArticle = [];
-    (value ? filteredArticle = articles.filter(article => article.note.includes(value)) : filteredArticle = [] );
+    (value ? filteredArticle = articles.filter(article => article.note.includes(value)) || articles.filter(article => article.people.includes(value))  || articles.filter(article => article.location.includes(value)): filteredArticle = [] );
 
     this.setState({
       filtered: filteredArticle})
@@ -33,6 +32,7 @@ class Search extends Component {
 
   render() {
     const { filtered } = this.state;
+    console.log(filtered)
     return(
       <div>
         <Header edit={true} title="Search"/>
@@ -41,9 +41,8 @@ class Search extends Component {
         </form>
         <div>
 
-          { filtered !== [] ? filtered.map(article => <Link to={`/album/${article.album}/article/${article._id}`} key={article.id}><ArticleItem   article={article} /> </Link>) : <p>Nothing found</p> }
+          { filtered !== [] ? filtered.map(article =>  <Link to={`/album/${article.album}/article/${article._id}`} key={article.id}><ArticleItem   article={article} /> </Link>) : <p>Nothing found</p> }
         </div>
-        <NavbarDown />
       </div>
       
     )

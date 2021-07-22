@@ -62,6 +62,10 @@ class ApiClient {
 		return this.apiClient.post('/article', article).then(response => response.data);
 	}
 
+	editAlbum(id, album) {
+		return this.apiClient.put(`/album/${id}`, album).then(response => response.data);
+	}
+
 	editArticle(id, article) {
 		return this.apiClient.put(`/article/${id}`, article).then(response => response.data);
 	}
