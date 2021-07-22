@@ -34,7 +34,7 @@ class NewAlbum extends Component {
     const { title, startDate, endDate, photo } = this.state;
     return(
       <div>
-        <Header edit={true} title="New Album"/>
+        <Header buttonType="edit" title="New Album"/>
         <form onSubmit={this.handleSubmit}>
           <input type="text" name="title" value={title} onChange={this.handleChange} placeholder="Trip name" />
           <input type="date" name="startDate" value={startDate} onChange={this.handleChange} placeholder="Start Date" />

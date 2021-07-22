@@ -45,7 +45,7 @@ class EditArticle extends Component {
     const { album, photo, note, location,  people } = this.state;
     return (
       <div>
-        <Header edit={true} title={album.title} />
+        <Header buttonType="edit" title={album.title} />
         <form onSubmit={this.handleSubmit}>
           <div>{photo}Photo here</div>
           <input type="text" name="note" value={note} onChange={this.handelChange}/>

@@ -42,7 +42,7 @@ class Article extends Component {
 
     return (
     <div>
-      <Header title={album.title} onToggle={this.toggleHandler} />
+      <Header title={album.title} onToggle={this.toggleHandler} buttonType="item" />
       { showModal && <DeleteModal onClose={this.toggleHandler} onDelete={this.deleteArticleHandler} />}
       <div>{photo}Photo here</div>
       <div>{note}</div>

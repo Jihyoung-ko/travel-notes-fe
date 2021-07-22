@@ -47,7 +47,7 @@ class EditAlbum extends Component {
     const { title, startDate, endDate, photo } = this.state;
     return (
       <div>
-        <Header edit={true} title="Edit" />
+        <Header buttonType="edit" title="Edit" />
         <form onSubmit={this.handleSubmit}>
           <div>{photo}Photo here</div>
           <input type="text" name="title" value={title} onChange={this.handelChange}/>

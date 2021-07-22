@@ -39,7 +39,7 @@ class NewArticle extends Component {
   
     return(
       <div>
-        <Header edit={true} title="New Article"/>
+        <Header buttonType="edit" title="New Article"/>
         <form onSubmit={this.handleSubmit}>
           <input type="text" name="note" value={note} onChange={this.handleChange} placeholder="Write a note..." />
           <input type="text" name="photo" value={photo} onChange={this.handleChange} placeholder="Add Photo" />

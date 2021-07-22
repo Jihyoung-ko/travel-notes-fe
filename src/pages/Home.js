@@ -29,7 +29,7 @@ class Home extends Component {
     const { albums } = this.state;
     return (
       <div>
-        <Header title={`${user.username}'s Album`} />
+        <Header title={`${user.username}'s Album`} buttonType="home" />
         {albums.map(album => {
           return <div key={album._id}><Link to={`album/${album._id}`}> <AlbumItem  album={album} /> </Link></div>
         })}
