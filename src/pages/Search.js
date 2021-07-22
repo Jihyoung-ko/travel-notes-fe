@@ -24,7 +24,7 @@ class Search extends Component {
     const { articles } = this.state;
     const { value } = e.target;
     let filteredArticle = [];
-    (value ? filteredArticle = articles.filter(article => article.note.includes(value)) || articles.filter(article => article.people.includes(value))  || articles.filter(article => article.location.includes(value)): filteredArticle = [] );
+    (value ? filteredArticle = articles.filter(article => article.note.includes(value)) || articles.filter(article => article.people.includes(value))  || articles.filter(article => article.location.includes(value)) : filteredArticle = [] );
 
     this.setState({
       filtered: filteredArticle})
@@ -32,7 +32,6 @@ class Search extends Component {
 
   render() {
     const { filtered } = this.state;
-    console.log(filtered)
     return(
       <div>
         <Header edit={true} title="Search"/>

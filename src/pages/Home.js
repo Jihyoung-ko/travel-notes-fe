@@ -19,7 +19,6 @@ class Home extends Component {
 
   async componentDidMount() {
     const albums = await apiClient.getAlbums();
-    console.log(albums);
     this.setState({ 
       albums,
     })

@@ -6,13 +6,15 @@ import { withAuth } from '../providers/AuthProvider';
 import ArticleItem from "../components/ArticleItem";
 import NavbarDown from "../components/NavbarDown";
 import Header from "../components/Header";
+import DeleteModal from '../components/DeleteModal';
 
 class Album extends Component {
   constructor(props){
     super(props);
     this.state = {
       album: {},
-      articles: []
+      articles: [],
+      showModal: false
     }
   }    
 
@@ -25,6 +27,12 @@ class Album extends Component {
     })
   }
 
+  toggleHandler = () => {
+    this.setState({
+      showModal: !this.state.showModal
+    })
+  }
+
   deleteAlbumHandler = async () => {
     const { id } = this.props.match.params;
     await apiClient.deleteAlbum(id);
@@ -33,13 +41,15 @@ class Album extends Component {
   }
     
   render() {
-    const { album, articles } = this.state;
+    const { album, articles, showModal } = this.state;
     const { id } = this.props.match.params;
     
     
     return(
       <div>
-        <Header title={ album.title } onDelete={this.deleteAlbumHandler} />
+        <Header title={ album.title } onToggle={this.toggleHandler} />
+        { showModal && <DeleteModal onClose={this.toggleHandler} onDelete={this.deleteAlbumHandler} />}
+
         <div>
           {articles.map(article => {
             return <div key={article._id}><Link to={`/album/${id}/article/${article._id}`}> <ArticleItem  article={article} /> </Link></div>
