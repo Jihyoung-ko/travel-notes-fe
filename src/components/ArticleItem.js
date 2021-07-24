@@ -6,7 +6,7 @@ const ArticleItem = ({ article }) => {
     <div key={id}>
       <div>{photo}</div>
       <div>{note}</div>
-      <div>{location}, {time}, {people}</div>
+      <div>{location}, { time && time.split('T', 1) }, {people}</div>
     </div>
   )
 }

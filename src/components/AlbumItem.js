@@ -7,7 +7,7 @@ const AlbumItem = ({ album }) => {
     <div style={{backgroundImage:`${photo}`}}>
       <h1>{title}</h1>
       <Link to={`/album/${_id}/edit`}> <button>Edit</button> </Link>
-      <p>{startDate} - {endDate}</p>
+      <p>{startDate.split('T', 1)} - {endDate.split('T', 1)}</p>
     
     </div>
   )

@@ -9,7 +9,7 @@ class Search extends Component {
     super(props);
     this.state={
       articles: [],
-      filtered:[],
+      query:"",
     }
   }
 
@@ -21,26 +21,28 @@ class Search extends Component {
   }
 
   searchHandler = (e) => {
-    const { articles } = this.state;
+    
     const { value } = e.target;
-    let filteredArticle = [];
-    (value ? filteredArticle = articles.filter(article => article.note.includes(value)) || articles.filter(article => article.people.includes(value))  || articles.filter(article => article.location.includes(value)) : filteredArticle = [] );
+    // let filteredArticle = [];
+    // (value ? filteredArticle = articles.filter(article => article.note?.includes(value) ||  article.people?.includes(value) || article.location?.includes(value))  : filteredArticle = [] );
 
     this.setState({
-      filtered: filteredArticle})
+      query: value})
   }
 
   render() {
-    const { filtered } = this.state;
+    const { query, articles } = this.state;
+    const filteredArticle = articles.filter(article => article.note?.toLowerCase().includes(query.toLowerCase()) || article.people?.toLowerCase().includes(query.toLowerCase()) || article.location?.toLowerCase().includes(query.toLowerCase()) ) ;
+
     return(
       <div>
-        <Header edit={true} title="Search"/>
+        <Header buttonType="edit" title="Search"/>
         <form>
           <input type="text"  placeholder="Search..." onChange={this.searchHandler}/>
         </form>
         <div>
 
-          { filtered !== [] ? filtered.map(article =>  <Link to={`/album/${article.album}/article/${article._id}`} key={article.id}><ArticleItem   article={article} /> </Link>) : <p>Nothing found</p> }
+          {query ? filteredArticle.map(article =>  <Link to={`/album/${article.album}/article/${article._id}`} key={article._id}><ArticleItem   article={article} /> </Link>) : "" }
         </div>
       </div>
       

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Switch } from 'react-router-dom';
 
-import Navbar from './components/Navbar';
 import PrivateRoute from './components/PrivateRoute';
 import AnonRoute from './components/AnonRoute';
 import Signup from './pages/Signup';
@@ -15,6 +14,7 @@ import NewArticle from './pages/NewArticle';
 import Search from './pages/Search';
 import EditArticle from './pages/EditArticle';
 import EditAlbum from './pages/EditAlbum';
+import Profile from './pages/Profile';
 
 class App extends Component {
 	render() {
@@ -24,7 +24,6 @@ class App extends Component {
 		}
 		return (
 			<div className="container">
-				<Navbar />
 				<Switch>
 					<AnonRoute path="/signup" component={Signup} />
 					<AnonRoute path="/login" component={Login} />
@@ -36,6 +35,7 @@ class App extends Component {
 					<PrivateRoute exact path="/album/:id" component={Album} />
 					<PrivateRoute path="/new-album" component={NewAlbum} />
 					<PrivateRoute path="/search" component={Search} />
+					<PrivateRoute path="/profile" component={Profile} />
 				</Switch>
 			</div>
 		);
