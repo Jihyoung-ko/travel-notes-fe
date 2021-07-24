@@ -35,12 +35,14 @@ class NewAlbum extends Component {
     return(
       <div>
         <Header buttonType="edit" title="New Album"/>
-        <form onSubmit={this.handleSubmit}>
-          <input type="text" name="title" value={title} onChange={this.handleChange} placeholder="Trip name" />
-          <input type="date" name="startDate" value={startDate} onChange={this.handleChange} placeholder="Start Date" />
-          <input type="date" name="endDate" value={endDate} onChange={this.handleChange} placeholder="End Date" />
-          <input type="text" name="photo" value={photo} onChange={this.handleChange} placeholder="Add photo" />
-          <button>Save</button>
+        <form onSubmit={this.handleSubmit} className="newAlbum-form">
+          <input className="newAlbum-input" type="text" name="title" value={title} onChange={this.handleChange} placeholder="Trip name" />
+          <label>Start Date</label>
+          <input className="newAlbum-input" type="date" name="startDate" value={startDate} onChange={this.handleChange} placeholder="Start Date" />
+          <label>End Date</label>
+          <input className="newAlbum-input" type="date" name="endDate" value={endDate} onChange={this.handleChange} placeholder="End Date" />
+          <input className="newAlbum-input" type="text" name="photo" value={photo} onChange={this.handleChange} placeholder="Add photo" />
+          <button className="save-btn">Save</button>
         </form>
         <NavbarDown />
       </div>

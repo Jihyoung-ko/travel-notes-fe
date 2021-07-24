@@ -50,11 +50,10 @@ class Album extends Component {
         <Header title={ album.title } onToggle={this.toggleHandler} buttonType="item" />
         { showModal && <DeleteModal onClose={this.toggleHandler} onDelete={this.deleteAlbumHandler} />}
 
-        <div>
-          {articles.map(article => {
-            return <div key={article._id}><Link to={`/album/${id}/article/${article._id}`}> <ArticleItem  article={article} /> </Link></div>
-          })}
-        </div>
+        {articles.map(article => {
+            return <Link to={`/album/${id}/article/${article._id}`} key={article._id}> <ArticleItem  article={article} /> </Link>
+        })}
+        
         <NavbarDown middlebutton={`/album/${id}/new-article`} middlebuttonName={"ADD"} />
       </div>
     )

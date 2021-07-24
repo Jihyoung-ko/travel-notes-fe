@@ -21,11 +21,7 @@ class Search extends Component {
   }
 
   searchHandler = (e) => {
-    
     const { value } = e.target;
-    // let filteredArticle = [];
-    // (value ? filteredArticle = articles.filter(article => article.note?.includes(value) ||  article.people?.includes(value) || article.location?.includes(value))  : filteredArticle = [] );
-
     this.setState({
       query: value})
   }
@@ -36,14 +32,11 @@ class Search extends Component {
 
     return(
       <div>
-        <Header buttonType="edit" title="Search"/>
-        <form>
-          <input type="text"  placeholder="Search..." onChange={this.searchHandler}/>
-        </form>
-        <div>
+        <Header buttonType="edit"/>
+        <input className="search-input" type="text"  placeholder="Search..." onChange={this.searchHandler}/>
 
-          {query ? filteredArticle.map(article =>  <Link to={`/album/${article.album}/article/${article._id}`} key={article._id}><ArticleItem   article={article} /> </Link>) : "" }
-        </div>
+        {query ? filteredArticle.map(article =>  <Link to={`/album/${article.album}/article/${article._id}`} key={article._id}><ArticleItem   article={article} /> </Link>) : "" }
+        
       </div>
       
     )

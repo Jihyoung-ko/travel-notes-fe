@@ -31,7 +31,7 @@ class Home extends Component {
       <div>
         <Header title={`${user.username}'s Album`} buttonType="home" />
         {albums.map(album => {
-          return <div key={album._id}><Link to={`album/${album._id}`}> <AlbumItem  album={album} /> </Link></div>
+          return <div className="album-card" key={album._id}><Link to={`album/${album._id}`}> <AlbumItem  album={album} /> </Link></div>
         })}
         <NavbarDown middlebutton={'/new-album'} middlebuttonName={"ADD"} />
       </div>

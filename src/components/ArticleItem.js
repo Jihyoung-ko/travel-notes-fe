@@ -1,12 +1,15 @@
 import React from 'react';
 
 const ArticleItem = ({ article }) => {
-  const { id, photo, note, location, time, people } = article;
+  const { photo, note, location, time, people } = article;
   return (
-    <div key={id}>
-      <div>{photo}</div>
-      <div>{note}</div>
-      <div>{location}, { time && time.split('T', 1) }, {people}</div>
+    <div className="article-item-container flex">
+      { photo && <div className="article-item-photo">{photo}</div> }
+      <div style={{display:"inline-block"}} className="article-item-text">
+        <p>{note}</p>
+        <p style={{fontSize:"0.8em", marginTop:"10px"}}>{location}  { time && time.split('T', 1) }  {people}</p>
+      </div>
+      
     </div>
   )
 }

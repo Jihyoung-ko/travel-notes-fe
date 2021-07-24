@@ -44,9 +44,11 @@ class Article extends Component {
     <div>
       <Header title={album.title} onToggle={this.toggleHandler} buttonType="item" />
       { showModal && <DeleteModal onClose={this.toggleHandler} onDelete={this.deleteArticleHandler} />}
-      <div>{photo}Photo here</div>
-      <div>{note}</div>
-      <div>{location}{ time && time.split('T', 1) }{people}</div>
+      <div className="article-detail-container">
+        <div>{photo}Photo here</div>
+        <p>{note}</p>
+        <p>{location} { time && time.split('T', 1) } {people}</p>
+      </div>
       <NavbarDown middlebutton={`/album/${albumId}/article/${articleId}/edit`} middlebuttonName={"EDIT"}/>
     </div>
   )
