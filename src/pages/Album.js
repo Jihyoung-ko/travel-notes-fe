@@ -7,6 +7,8 @@ import ArticleItem from "../components/ArticleItem";
 import NavbarDown from "../components/NavbarDown";
 import Header from "../components/Header";
 import DeleteModal from '../components/DeleteModal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 class Album extends Component {
   constructor(props){
@@ -47,14 +49,16 @@ class Album extends Component {
     
     return(
       <div>
-        <Header title={ album.title } onToggle={this.toggleHandler} buttonType="item" />
+        <Header title={ album.title } onToggle={this.toggleHandler} buttonType="item" buttonName="BACK" />
         { showModal && <DeleteModal onClose={this.toggleHandler} onDelete={this.deleteAlbumHandler} />}
-
-        {articles.map(article => {
-            return <Link to={`/album/${id}/article/${article._id}`} key={article._id}> <ArticleItem  article={article} /> </Link>
-        })}
         
-        <NavbarDown middlebutton={`/album/${id}/new-article`} middlebuttonName={"ADD"} />
+        <div className="contents-container" style={{marginBottom:"75px"}}>
+          <Link to={`/album/${id}/new-article`}><button className="add-btn"><FontAwesomeIcon icon="plus"/></button> </Link>
+          {articles.map(article => {
+              return <Link to={`/album/${id}/article/${article._id}`} key={article._id}> <ArticleItem  article={article} /> </Link>
+          })}
+        </div>
+        <NavbarDown />
       </div>
     )
   }

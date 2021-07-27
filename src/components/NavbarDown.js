@@ -1,13 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const NavbarDown = ({ middlebutton, middlebuttonName }) => {
+const NavbarDown = () => {
   
   return (
-    <div className="navbar-container flex">
-      <Link to={'/home'}>HOME </Link>
-      <Link to={middlebutton}> {middlebuttonName}</Link>
-      <Link to={'/search'}>SEARCH </Link>
+    <div className="navbar-container ">
+      <Link to={'/home'}><FontAwesomeIcon icon="home" size="lg"/> </Link>
     </div>
   )
 }

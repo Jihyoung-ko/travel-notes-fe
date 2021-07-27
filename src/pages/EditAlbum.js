@@ -37,7 +37,7 @@ class EditAlbum extends Component {
     this.props.history.push('/home');
   }
 
-  handelChange = (e) => {
+  handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
     })
@@ -47,14 +47,16 @@ class EditAlbum extends Component {
     const { title, startDate, endDate, photo } = this.state;
     return (
       <div>
-        <Header buttonType="edit" title="Edit" />
-        <form onSubmit={this.handleSubmit}>
-          <div>{photo}Photo here</div>
-          <input type="text" name="title" value={title} onChange={this.handelChange}/>
-          <input type="date" name="startDate" value={startDate} onChange={this.handelChange}/>
-          <input type="date" name="endDate" value={endDate} onChange={this.handelChange}/>
-          <button>Save</button>
-        </form>
+        <Header buttonType="edit" title="Edit" buttonName="CANCEL" />
+        <div className="contents-container">
+          <form onSubmit={this.handleSubmit}>
+            <input type="text" name="title" value={title} onChange={this.handleChange} placeholder="Trip name"/>
+            <input type="date" name="startDate" value={startDate} onChange={this.handleChange}/>
+            <input type="date" name="endDate" value={endDate} onChange={this.handleChange}/>
+            <input type="text" name="photo" value={photo} onChange={this.handleChange} placeholder="Add photo" />
+            <button className="save-btn">Save</button>
+          </form>
+        </div>
         <NavbarDown />
       </div>
   )

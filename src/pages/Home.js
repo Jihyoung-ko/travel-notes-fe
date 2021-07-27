@@ -7,13 +7,13 @@ import { withAuth } from '../providers/AuthProvider';
 import AlbumItem from "../components/AlbumItem";
 import NavbarDown from "../components/NavbarDown";
 import Header from "../components/Header";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      albums: []
+      albums: [],
     }
   }
 
@@ -30,10 +30,13 @@ class Home extends Component {
     return (
       <div>
         <Header title={`${user.username}'s Album`} buttonType="home" />
-        {albums.map(album => {
-          return <div className="album-card" key={album._id}><Link to={`album/${album._id}`}> <AlbumItem  album={album} /> </Link></div>
-        })}
-        <NavbarDown middlebutton={'/new-album'} middlebuttonName={"ADD"} />
+        <div className="contents-container">
+          <Link to={'/new-album'}> <button className="add-btn"> <FontAwesomeIcon icon="plus"/> </button> </Link>
+          {albums.map(album => {
+            return <div className="album-card" key={album._id}><Link to={`album/${album._id}`}> <AlbumItem  album={album} /> </Link></div>
+          })}
+        </div>
+        <NavbarDown />
       </div>
     )
   }

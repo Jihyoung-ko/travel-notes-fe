@@ -45,14 +45,16 @@ class EditArticle extends Component {
     const { album, photo, note, location,  people } = this.state;
     return (
       <div>
-        <Header buttonType="edit" title={album.title} />
-        <form onSubmit={this.handleSubmit}>
-          <div>{photo}Photo here</div>
-          <input type="text" name="note" value={note} onChange={this.handelChange}/>
-          <input type="text" name="location" value={location} onChange={this.handelChange}/>
-          <input type="text" name="people" value={people} onChange={this.handelChange}/>
-          <button>Save</button>
-        </form>
+        <Header buttonType="edit" title={album.title} buttonName="CANCEL" />
+        <div className="contents-container">
+          <form onSubmit={this.handleSubmit}>
+            <div>{photo}Photo here</div>
+            <input type="text" name="note" value={note} onChange={this.handelChange} placeholder="Write a note..."/>
+            <input type="text" name="location" value={location} onChange={this.handelChange} placeholder="Add Place"/>
+            <input type="text" name="people" value={people} onChange={this.handelChange} placeholder="Add People"/>
+            <button className="save-btn">Save</button>
+          </form>
+        </div>
         <NavbarDown />
       </div>
   )

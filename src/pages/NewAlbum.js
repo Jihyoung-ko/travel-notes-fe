@@ -34,16 +34,16 @@ class NewAlbum extends Component {
     const { title, startDate, endDate, photo } = this.state;
     return(
       <div>
-        <Header buttonType="edit" title="New Album"/>
-        <form onSubmit={this.handleSubmit} className="newAlbum-form">
-          <input className="newAlbum-input" type="text" name="title" value={title} onChange={this.handleChange} placeholder="Trip name" />
-          <label>Start Date</label>
-          <input className="newAlbum-input" type="date" name="startDate" value={startDate} onChange={this.handleChange} placeholder="Start Date" />
-          <label>End Date</label>
-          <input className="newAlbum-input" type="date" name="endDate" value={endDate} onChange={this.handleChange} placeholder="End Date" />
-          <input className="newAlbum-input" type="text" name="photo" value={photo} onChange={this.handleChange} placeholder="Add photo" />
-          <button className="save-btn">Save</button>
-        </form>
+        <Header buttonType="edit" title="New Album" buttonName="CANCEL" />
+        <div className="contents-container">
+          <form onSubmit={this.handleSubmit} className="newAlbum-form">
+            <input className="newAlbum-input" type="text" name="title" value={title} onChange={this.handleChange} placeholder="Trip name" />
+            <input className="newAlbum-input" type="text" name="startDate" value={startDate} onChange={this.handleChange} placeholder="Start Date" onFocus={e => (e.target.type = "date")} />
+            <input className="newAlbum-input" type="text" name="endDate" value={endDate} onChange={this.handleChange} placeholder="End Date" onFocus={e => (e.target.type = "date")} />
+            <input className="newAlbum-input" type="text" name="photo" value={photo} onChange={this.handleChange} placeholder="Add photo" />
+            <button className="save-btn">Save</button>
+          </form>
+        </div>
         <NavbarDown />
       </div>
       

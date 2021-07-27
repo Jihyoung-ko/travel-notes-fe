@@ -32,11 +32,10 @@ class Search extends Component {
 
     return(
       <div>
-        <Header buttonType="edit"/>
-        <input className="search-input" type="text"  placeholder="Search..." onChange={this.searchHandler}/>
-
-        {query ? filteredArticle.map(article =>  <Link to={`/album/${article.album}/article/${article._id}`} key={article._id}><ArticleItem   article={article} /> </Link>) : "" }
-        
+        <Header buttonType="search" buttonName="CANCEL" onSearch={this.searchHandler} />
+        <div className="contents-container" style={{marginTop:"85px"}}>
+          {query ? filteredArticle.map(article =>  <Link to={`/album/${article.album}/article/${article._id}`} key={article._id}><ArticleItem   article={article} /> </Link>) : "" }
+        </div>
       </div>
       
     )

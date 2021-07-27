@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import './App.css';
 import { Switch } from 'react-router-dom';
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { far } from '@fortawesome/free-regular-svg-icons';
+import { faSearch, faHome, faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
+
 import PrivateRoute from './components/PrivateRoute';
 import AnonRoute from './components/AnonRoute';
 import Signup from './pages/Signup';
@@ -16,6 +20,8 @@ import Search from './pages/Search';
 import EditArticle from './pages/EditArticle';
 import EditAlbum from './pages/EditAlbum';
 import Profile from './pages/Profile';
+
+library.add(far, faSearch, faPlus, faHome, faTimes);
 
 class App extends Component {
 	render() {
