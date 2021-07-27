@@ -63,7 +63,7 @@ h2 {
 }
 
 .save-btn {
-  width: 15%;
+  width: 30%;
   background: #a828d2;
   border: none;
   border-radius: 5px;
@@ -110,6 +110,13 @@ h1 {
 form {
   display: flex;
   flex-direction: column;
+  max-width: 300px;
+  margin: auto;
+}
+
+label {
+  width: 80%;
+  margin: auto;
 }
 
 input {
@@ -124,6 +131,16 @@ input:focus {
   border-color: #a828d2;
 }
 
+.note-input {
+  height: 30vh;
+}
+
+.note-input::placeholder {
+  position: fixed;
+  top: 0;
+  padding-top: 10px;
+} 
+    
 /* Article */
 
 .article-item-container {
@@ -200,4 +217,14 @@ input:focus {
 .modal-btn {
   padding: 3px 15px;
   margin: 0 15px;
+}
+
+.profile-container {
+  background-color: white;
+  margin: auto;
+  max-width: 300px;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 200px;
+  text-align: center;
 }

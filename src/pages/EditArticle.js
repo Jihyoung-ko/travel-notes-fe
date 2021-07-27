@@ -49,7 +49,7 @@ class EditArticle extends Component {
         <div className="contents-container">
           <form onSubmit={this.handleSubmit}>
             <div>{photo}Photo here</div>
-            <input type="text" name="note" value={note} onChange={this.handelChange} placeholder="Write a note..."/>
+            <input className="note-input" type="text" name="note" value={note} onChange={this.handelChange} placeholder="Write a note..."/>
             <input type="text" name="location" value={location} onChange={this.handelChange} placeholder="Add Place"/>
             <input type="text" name="people" value={people} onChange={this.handelChange} placeholder="Add People"/>
             <button className="save-btn">Save</button>

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import Header from "../components/Header";
+import NavbarDown from "../components/NavbarDown";
 import { withAuth } from "../providers/AuthProvider";
 
 class Signup extends Component {
@@ -26,7 +28,9 @@ class Signup extends Component {
     const { username, password } = this.state;
     return (
       <div>
-        <form onSubmit={this.handleFormSubmit}>
+        <Header title="Sign Up" buttonType="item" buttonName="BACK" />
+
+        <form onSubmit={this.handleFormSubmit} style={{marginTop:"200px"}}>
           <label>Username:</label>
           <input
             type="text"
@@ -41,12 +45,13 @@ class Signup extends Component {
             value={password}
             onChange={this.handleChange}
           />
-          <input type="submit" value="Signup" />
+          <input type="submit" value="Signup" className="save-btn"/>
+          <p style={{marginTop:"10px", textAlign:"center"}}>
+            Already have account?
+            <Link to={"/login"} style={{color:"#a828d2"}}> Login</Link>
+          </p>
         </form>
-        <p>
-          Already have account?
-          <Link to={"/login"}> Login</Link>
-        </p>
+        <NavbarDown />
       </div>
     );
   }

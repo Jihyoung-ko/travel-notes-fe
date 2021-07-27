@@ -43,6 +43,7 @@ class App extends Component {
 					<PrivateRoute path="/new-album" component={NewAlbum} />
 					<PrivateRoute path="/search" component={Search} />
 					<PrivateRoute path="/profile" component={Profile} />
+					<PrivateRoute exact path="/" component={Home} />
 				</Switch>
 			</div>
 		);

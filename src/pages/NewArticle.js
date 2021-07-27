@@ -42,7 +42,7 @@ class NewArticle extends Component {
         <Header buttonType="edit" title="New Article" buttonName="CANCEL" />
         <div className="contents-container">
           <form onSubmit={this.handleSubmit}>
-            <input type="text" name="note" value={note} onChange={this.handleChange} placeholder="Write a note..." />
+            <input className="note-input" type="text" name="note" value={note} onChange={this.handleChange} placeholder="Write a note..." />
             <input type="text" name="photo" value={photo} onChange={this.handleChange} placeholder="Add Photo" />
             <input type="text" name="location" value={location} onChange={this.handleChange} placeholder="Add Place" />
             <input type="text" name="people" value={people} onChange={this.handleChange} placeholder="Add People" />
