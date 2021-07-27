@@ -45,11 +45,16 @@ class Article extends Component {
     return (
     <div>
       <Header title={album.title} buttonType="item" buttonName="BACK" />
+      
       { showModal && <DeleteModal onClose={this.toggleHandler} onDelete={this.deleteArticleHandler} />}
+
       <div className="contents-container  ">
         <div className="article-detail-container">
+
           <Link to={`/album/${albumId}/article/${articleId}/edit`}><button className="edit-btn" style={{top:"10px", right:"40px"}} ><FontAwesomeIcon icon={['far', 'edit']} /></button> </Link>
+
           <button className="edit-btn" style={{top:"10px", right:"0px"}} onClick={this.toggleHandler}><FontAwesomeIcon icon={['far', 'trash-alt']} /></button>
+
           <div>{photo}Photo here</div>
           <p>{note}</p>
           <p>{location} { time && time.split('T', 1) } {people}</p>

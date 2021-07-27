@@ -34,7 +34,7 @@ class Login extends Component {
       <div>
         <Header title="Log In" buttonType="item" buttonName="BACK" />
         <div className="contents-container">
-          <form onSubmit={this.handleFormSubmit} style={{marginTop:"200px"}}>
+          <form onSubmit={this.handleFormSubmit} style={{marginTop:"150px"}}>
             <label>Username:</label>
             <input
               type="text"

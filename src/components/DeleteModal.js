@@ -1,13 +1,15 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const DeletModal = (props) => {
+const DeleteModal = (props) => {
 
-  const onClose = () => {
+  const onClose = (e) => {
+    e.preventDefault();
     props.onClose();
   }
   
-  const onDelete = () => {
+  const onDelete = (e) => {
+    e.preventDefault();
     props.onDelete();
   }
 
@@ -21,4 +23,4 @@ const DeletModal = (props) => {
   )
 }
 
-export default DeletModal;
+export default DeleteModal;

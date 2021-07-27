@@ -30,7 +30,7 @@ class Signup extends Component {
       <div>
         <Header title="Sign Up" buttonType="item" buttonName="BACK" />
 
-        <form onSubmit={this.handleFormSubmit} style={{marginTop:"200px"}}>
+        <form onSubmit={this.handleFormSubmit} style={{marginTop:"150px"}}>
           <label>Username:</label>
           <input
             type="text"
