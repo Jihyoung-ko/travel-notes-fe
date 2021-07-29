@@ -34,8 +34,18 @@ class NewArticle extends Component {
     })
   }
 
+  handleFileUpload = (e) => {
+    console.log('file upload', e.target.files[0]);
+    const uploadData = new FormData();
+    uploadData.append('photo', e.target.files[0]);
+
+    apiClient.handleUpload(uploadData)
+    .then(response => {
+      this.setState({ photo: response.secure_url })})
+  }
+
   render(){
-    const { note, photo, location, people } = this.state;
+    const { note, location, people } = this.state;
   
     return(
       <div>
@@ -43,7 +53,7 @@ class NewArticle extends Component {
         <div className="contents-container">
           <form onSubmit={this.handleSubmit}>
             <textarea className="note-input" type="text" name="note" value={note} onChange={this.handleChange} placeholder="Write a note..." />
-            <input type="text" name="photo" value={photo} onChange={this.handleChange} placeholder="Add Photo" />
+            <input type="file" name="photo"  onChange={this.handleFileUpload} placeholder="Add Photo" />
             <input type="text" name="location" value={location} onChange={this.handleChange} placeholder="Add Place" />
             <input type="text" name="people" value={people} onChange={this.handleChange} placeholder="Add People" />
             <button className="save-btn">Save</button>

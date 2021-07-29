@@ -41,6 +41,16 @@ class EditArticle extends Component {
     })
   }
 
+  handleFileUpload = (e) => {
+    console.log('file upload', e.target.files[0]);
+    const uploadData = new FormData();
+    uploadData.append('photo', e.target.files[0]);
+
+    apiClient.handleUpload(uploadData)
+    .then(response => {
+      this.setState({ photo: response.secure_url })})
+  }
+
   render(){
     const { album, photo, note, location,  people } = this.state;
     return (
@@ -48,7 +58,8 @@ class EditArticle extends Component {
         <Header buttonType="edit" title={album.title} buttonName="CANCEL" />
         <div className="contents-container">
           <form onSubmit={this.handleSubmit}>
-            <div>{photo}Photo here</div>
+            <div><img src={photo} alt="photo" /> </div>
+            <input type="file" name="photo"  onChange={this.handleFileUpload} placeholder="Change Photo" />
             <textarea className="note-input" type="text" name="note" value={note} onChange={this.handelChange} placeholder="Write a note..."/>
             <input type="text" name="location" value={location} onChange={this.handelChange} placeholder="Add Place"/>
             <input type="text" name="people" value={people} onChange={this.handelChange} placeholder="Add People"/>

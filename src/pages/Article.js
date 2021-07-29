@@ -41,11 +41,11 @@ class Article extends Component {
     const { album, showModal } = this.state;
     const { photo, note, location, time, people } = this.state.article;
     const { albumId, articleId } = this.props.match.params;
-
+    console.log(this.state.article)
     return (
     <div>
       <Header title={album.title} buttonType="item" buttonName="BACK" />
-      
+
       { showModal && <DeleteModal onClose={this.toggleHandler} onDelete={this.deleteArticleHandler} />}
 
       <div className="contents-container  ">
@@ -55,9 +55,9 @@ class Article extends Component {
 
           <button className="edit-btn" style={{top:"10px", right:"0px"}} onClick={this.toggleHandler}><FontAwesomeIcon icon={['far', 'trash-alt']} /></button>
 
-          <div>{photo}Photo here</div>
+          { photo ? <div><img src={photo} alt="photo" /> </div> : <br />  }
           <p>{note}</p>
-          <p>{location} { time && time.split('T', 1) } {people}</p>
+          <p>{location} { time && time.split('T', 1) } {people}  </p>
         </div>
       </div>
       <NavbarDown />

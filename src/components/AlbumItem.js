@@ -40,10 +40,10 @@ class AlbumItem extends Component  {
   }
 
   render() {
-    const { title, startDate, endDate, photo, _id } = this.props.album;
+    const { title, startDate, endDate, _id } = this.props.album;
     const { showModal } = this.state;
     return (
-      <div style={{backgroundImage:`${photo}`}}>
+      <>
         <h1>{title}</h1>
 
         { showModal && <DeleteModal onClose={this.closeModal} onDelete={this.deleteAlbumHandler(_id)} />}
@@ -53,7 +53,7 @@ class AlbumItem extends Component  {
         
         <p>{startDate.split('T', 1)} - {endDate.split('T', 1)}</p>
       
-      </div>
+      </>
     )
   }
   

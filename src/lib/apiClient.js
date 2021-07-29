@@ -54,6 +54,10 @@ class ApiClient {
 		return this.apiClient.get('/article').then(response => response.data);
 	}
 
+	handleUpload(theFile) {
+		return this.apiClient.post('/api/upload', theFile).then(response => response.data);
+	}
+
 	addNewAlbum(album) {
 		return this.apiClient.post('/album', album).then(response => response.data);
 	}
