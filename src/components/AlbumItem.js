@@ -51,7 +51,7 @@ class AlbumItem extends Component  {
         <Link to={`/album/${_id}/edit`}> <button className="edit-btn" style={{top:"10px", right:"10px"}}><FontAwesomeIcon icon={['far', 'edit']} /> </button> </Link>
         <button className="edit-btn" style={{top:"40px", right:"10px"}} onClick={this.toggleHandler}> <FontAwesomeIcon icon={['far', 'trash-alt']} /></button>
         
-        <p>{startDate.split('T', 1)} - {endDate.split('T', 1)}</p>
+        <p>{startDate?.split('T', 1)} - {endDate?.split('T', 1)}</p>
       
       </>
     )

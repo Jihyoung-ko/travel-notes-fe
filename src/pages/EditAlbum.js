@@ -20,12 +20,11 @@ class EditAlbum extends Component {
   async componentDidMount() {
     const { id } = this.props.match.params;
     const album = await apiClient.getAlbum(id);
-    const { title, startDate, endDate, photo } = album;
+    const { title, startDate, endDate } = album;
     this.setState({
       title,
       startDate,
-      endDate,
-      photo
+      endDate
     })
   }
 

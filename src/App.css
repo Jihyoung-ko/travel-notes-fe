@@ -200,6 +200,7 @@ input:focus {
   background-color: #D2A828;
   padding: 15px;
   border-radius: 5px;
+  z-index: 1;
 }
 
 .close-btn {

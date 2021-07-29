@@ -27,13 +27,15 @@ class Home extends Component {
   render() {
     const { user } = this.props;
     const { albums } = this.state;
+    
     return (
       <div>
         <Header title={`${user.username}'s Album`} buttonType="home" />
         <div className="contents-container">
           <Link to={'/new-album'}> <button className="add-btn"> <FontAwesomeIcon icon="plus"/> </button> </Link>
           {albums.map(album => {
-            return <div className="album-card" key={album._id} style={{backgroundImage: `url(${album.photo})`}}><Link to={`album/${album._id}`}> <AlbumItem  album={album} /> </Link></div>
+            console.log(album)
+            return <div className="album-card" key={album._id} style={ album.photo? {backgroundImage: `url(${album.photo})`} : {backgroundColor:"white"} }><Link to={`album/${album._id}`}> <AlbumItem  album={album} /> </Link></div>
           })}
         </div>
         <NavbarDown />
