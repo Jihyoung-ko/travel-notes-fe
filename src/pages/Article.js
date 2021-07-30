@@ -41,7 +41,6 @@ class Article extends Component {
     const { album, showModal } = this.state;
     const { photo, note, location, time, people } = this.state.article;
     const { albumId, articleId } = this.props.match.params;
-    console.log(this.state.article)
     return (
     <div>
       <Header title={album.title} buttonType="item" buttonName="BACK" />

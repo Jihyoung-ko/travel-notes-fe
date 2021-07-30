@@ -30,7 +30,6 @@ class EditAlbum extends Component {
 
    handleSubmit = async (e) => {
     const { id } = this.props.match.params;
-    console.log(id)
     e.preventDefault(); 
     await apiClient.editAlbum(id, this.state);
     this.props.history.push('/home');

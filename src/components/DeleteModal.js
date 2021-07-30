@@ -10,7 +10,8 @@ const DeleteModal = (props) => {
   
   const onDelete = (e) => {
     e.preventDefault();
-    props.onDelete();
+    props.onDelete(props.albumId);
+      props.onClose();
   }
 
   return(

@@ -53,12 +53,32 @@ h2 {
   border-radius: 50%;
 }
 
-.edit-btn {
+.album-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.album-title{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 250px;
+
+
+}
+
+.album-buttons-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.album-button {
   border-radius: 50%;
   border: none;
   padding: 5px;
-  position: absolute;
-  width: 25px;
   background-color: white;
 }
 
