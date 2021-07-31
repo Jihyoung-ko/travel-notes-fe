@@ -50,13 +50,18 @@ class Article extends Component {
       <div className="contents-container  ">
         <div className="article-detail-container">
 
-          <Link to={`/album/${albumId}/article/${articleId}/edit`}><button className="edit-btn" style={{top:"10px", right:"40px"}} ><FontAwesomeIcon icon={['far', 'edit']} /></button> </Link>
+        <div className="article-button-container">
 
-          <button className="edit-btn" style={{top:"10px", right:"0px"}} onClick={this.toggleHandler}><FontAwesomeIcon icon={['far', 'trash-alt']} /></button>
+          <Link to={`/album/${albumId}/article/${articleId}/edit`}>
+            <button className="article-btn" style={{top:"10px", right:"40px"}} ><FontAwesomeIcon icon={['far', 'edit']}  size="lg"/></button> 
+          </Link>
 
-          { photo ? <div><img src={photo} alt="photo" /> </div> : <br />  }
+          <button className="article-btn" style={{top:"10px", right:"0px"}} onClick={this.toggleHandler}><FontAwesomeIcon icon={['far', 'trash-alt']} size="lg" /></button>
+        </div>
+
+          { photo ? <div className="article-img-container"><img src={photo} alt="photo"  /> </div> : "" }
           <p>{note}</p>
-          <p>{location} { time && time.split('T', 1) } {people}  </p>
+          <p>{ location && `At ${location}`} { time && time.split('T', 1) } { people && `with ${people}`}  </p>
         </div>
       </div>
       <NavbarDown />

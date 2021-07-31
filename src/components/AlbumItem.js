@@ -44,10 +44,10 @@ class AlbumItem extends Component  {
         
         <div className='album-buttons-container'>
           <Link to={`/album/${_id}/edit`}> <button className="album-button" >
-            <FontAwesomeIcon size='2x' icon={['far', 'edit']} /> </button>
+            <FontAwesomeIcon size='lg' icon={['far', 'edit']} /> </button>
           </Link>
           <button className="album-button" style={{top:"40px", right:"10px"}} onClick={this.toggleHandler}>
-            <FontAwesomeIcon size='2x' icon={['far', 'trash-alt']} />
+            <FontAwesomeIcon size='lg' icon={['far', 'trash-alt']} />
           </button>
         </div>
       

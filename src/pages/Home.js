@@ -55,6 +55,7 @@ class Home extends Component {
         <Header title={`${user.username}'s Album`} buttonType="home" />
         <div className="contents-container">
           {!this.state.loading ? <><Link to={'/new-album'}> <button className="add-btn"> <FontAwesomeIcon icon="plus"/> </button> </Link>
+
           {albums.map(album => {
             return <div className="album-card" key={album._id} style={ album.photo? {backgroundImage: `url(${album.photo})`} : {backgroundColor:"white"} }>
               <Link to={`album/${album._id}`}>

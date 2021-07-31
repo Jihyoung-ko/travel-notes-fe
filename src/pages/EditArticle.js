@@ -58,7 +58,7 @@ class EditArticle extends Component {
         <Header buttonType="edit" title={album.title} buttonName="CANCEL" />
         <div className="contents-container">
           <form onSubmit={this.handleSubmit}>
-            { photo &&<div><img src={photo} alt="photo" /> </div> }
+            { photo &&<div className="edit-article-img-container"><img src={photo} alt="photo" /> </div> }
             <input type="file" name="photo"  onChange={this.handleFileUpload} placeholder="Change Photo" />
             <textarea className="note-input" type="text" name="note" value={note} onChange={this.handelChange} placeholder="Write a note..."/>
             <input type="text" name="location" value={location} onChange={this.handelChange} placeholder="Add Place"/>
