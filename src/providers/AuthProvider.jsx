@@ -13,6 +13,7 @@ export const withAuth = (Comp) => {
               isLoading={authProvider.isLoading} 
               isLoggedIn={authProvider.isLoggedIn}
               isLoggedOut={authProvider.isLoggedOut}
+              error={authProvider.error}
               user={authProvider.user}
               logout={authProvider.logout}
               login={authProvider.login} 
@@ -31,6 +32,7 @@ class AuthProvider extends Component {
     super(props)
     this.state = {
       status: 'loading',
+      error: false,
       user: null,
     }
   }
@@ -68,6 +70,7 @@ class AuthProvider extends Component {
     } catch (e) {
       this.setState({
         status: 'loggedOut',
+        error: true,
         user: null,
       })  
     }
@@ -107,13 +110,14 @@ class AuthProvider extends Component {
   }
 
   render() {
-    const { user, status } = this.state;
+    const { user, status, error } = this.state;
      
     return (
       <Provider value={{ 
           isLoading: status === 'loading',
           isLoggedIn: status === 'loggedIn',
           isLoggedOut: status === 'loggedOut',
+          error,
           user,
           login: this.login, 
           signup: this.signup,
