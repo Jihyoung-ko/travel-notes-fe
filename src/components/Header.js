@@ -1,15 +1,17 @@
 import React from "react";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {withAuth} from "../providers/AuthProvider";
 
 const Header = (props) => {
   const { buttonType, buttonName, title } = props;
-  const history = useHistory();
   
-
   const onSearch = (e) => {
     props.onSearch(e)
+  }
+
+  const goBackHandler = () => {
+    props.goBack()
   }
 
   const renderLeftButton = () => {
@@ -17,7 +19,7 @@ const Header = (props) => {
           if(buttonType === "home"){
               return <Link to={'/profile'}><button className="header-btn"><FontAwesomeIcon icon={['far', 'user-circle']} size="2x" /></button></Link>
           }else{
-              return <button className="header-btn" onClick={() => history.goBack()}>{buttonName}</button>
+              return <button className="header-btn" onClick={goBackHandler}>{buttonName}</button>
           }
       }
       return null

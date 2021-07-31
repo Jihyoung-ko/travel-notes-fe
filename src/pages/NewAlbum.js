@@ -40,11 +40,15 @@ class NewAlbum extends Component {
       this.setState({ photo: response.secure_url })})
   }
 
+  goBackHandler = () => {
+    this.props.history.push('/home');
+  }
+
   render(){
     const { title, startDate, endDate } = this.state;
     return(
       <div>
-        <Header buttonType="edit" title="New Album" buttonName="CANCEL" />
+        <Header buttonType="edit" title="New Album" buttonName="CANCEL" goBack={this.goBackHandler} />
         <div className="contents-container">
           <form onSubmit={this.handleSubmit} className="newAlbum-form">
             <input className="newAlbum-input" type="text" name="title" value={title} onChange={this.handleChange} placeholder="Trip name" />

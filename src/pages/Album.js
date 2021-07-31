@@ -39,8 +39,11 @@ class Album extends Component {
     const { id } = this.props.match.params;
     await apiClient.deleteAlbum(id);
     this.props.history.push('/home');
-
   }
+
+  goBackHandler = () => {
+    this.props.history.push('/home');
+   }
     
   render() {
     const { album, articles, showModal } = this.state;
@@ -49,7 +52,7 @@ class Album extends Component {
     
     return(
       <div>
-        <Header title={ album.title } onToggle={this.toggleHandler} buttonType="item" buttonName="BACK" />
+        <Header title={ album.title } onToggle={this.toggleHandler} buttonType="item" buttonName="BACK" goBack={this.goBackHandler} />
         { showModal && <DeleteModal onClose={this.toggleHandler} onDelete={this.deleteAlbumHandler} />}
         
         <div className="contents-container" style={{marginBottom:"75px"}}>

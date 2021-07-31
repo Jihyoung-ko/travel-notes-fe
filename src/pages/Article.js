@@ -31,6 +31,11 @@ class Article extends Component {
     })
   }
 
+  goBackHandler = () => {
+    const { albumId } = this.props.match.params;
+    this.props.history.push(`/album/${albumId}`);
+  }
+
   deleteArticleHandler = async () => {
     const { albumId, articleId } = this.props.match.params;
     await apiClient.deleteArticle(articleId);
@@ -43,7 +48,7 @@ class Article extends Component {
     const { albumId, articleId } = this.props.match.params;
     return (
     <div>
-      <Header title={album.title} buttonType="item" buttonName="BACK" />
+      <Header title={album.title} buttonType="item" buttonName="BACK" goBack={this.goBackHandler} />
 
       { showModal && <DeleteModal onClose={this.toggleHandler} onDelete={this.deleteArticleHandler} />}
 

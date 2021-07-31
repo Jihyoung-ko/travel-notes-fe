@@ -26,13 +26,17 @@ class Search extends Component {
       query: value})
   }
 
+  goBackHandler = () => {
+    this.props.history.goBack();
+  }
+
   render() {
     const { query, articles } = this.state;
     const filteredArticle = articles.filter(article => article.note?.toLowerCase().includes(query.toLowerCase()) || article.people?.toLowerCase().includes(query.toLowerCase()) || article.location?.toLowerCase().includes(query.toLowerCase()) ) ;
 
     return(
       <div>
-        <Header buttonType="search" buttonName="CANCEL" onSearch={this.searchHandler} />
+        <Header buttonType="search" buttonName="CANCEL" onSearch={this.searchHandler} goBack={this.goBackHandler} />
         <div className="contents-container" style={{marginTop:"85px"}}>
           {query ? filteredArticle.map(article =>  <Link to={`/album/${article.album}/article/${article._id}`} key={article._id}><ArticleItem   article={article} /> </Link>) : "" }
         </div>

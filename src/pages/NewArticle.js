@@ -44,12 +44,17 @@ class NewArticle extends Component {
       this.setState({ photo: response.secure_url })})
   }
 
+  goBackHandler = () => {
+    const { id } = this.props.match.params;
+    this.props.history.push(`/album/${id}`);
+   }
+
   render(){
     const { note, location, people } = this.state;
   
     return(
       <div>
-        <Header buttonType="edit" title="New Article" buttonName="CANCEL" />
+        <Header buttonType="edit" title="New Article" buttonName="CANCEL"  goBack={this.goBackHandler} />
         <div className="contents-container">
           <form onSubmit={this.handleSubmit}>
             <textarea className="note-input" type="text" name="note" value={note} onChange={this.handleChange} placeholder="Write a note..." />

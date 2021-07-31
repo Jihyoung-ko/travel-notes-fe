@@ -51,11 +51,16 @@ class EditArticle extends Component {
       this.setState({ photo: response.secure_url })})
   }
 
+  goBackHandler = () => {
+    const { albumId, articleId } = this.props.match.params;
+    this.props.history.push(`/album/${albumId}/article/${articleId}`);
+  }
+
   render(){
     const { album, photo, note, location,  people } = this.state;
     return (
       <div>
-        <Header buttonType="edit" title={album.title} buttonName="CANCEL" />
+        <Header buttonType="edit" title={album.title} buttonName="CANCEL"  goBack={this.goBackHandler} />
         <div className="contents-container">
           <form onSubmit={this.handleSubmit}>
             { photo &&<div className="edit-article-img-container"><img src={photo} alt="photo" /> </div> }

@@ -48,9 +48,10 @@ class Login extends Component {
               value={password}
               onChange={this.handleChange}
             />
-            <input type="submit" value="Login" className="save-btn" />
+            <button className="save-btn">Log in</button>
+
             <div style={{textAlign:"center"}}>
-              {this.props.error && <div style={{color:"red"}}>There was some problem logging you in. Check your credentials</div>}
+              {this.props.error && <div style={{color:"red"}}>There was some problem logging you in. Please try again.</div>}
             <p style={{margin:"10px 0"}}>Don´t have an account?</p>
             <p>Sign up <Link to="/signup"><span style={{color:"#a828d2"}}> Here</span></Link> </p>
           </div>
