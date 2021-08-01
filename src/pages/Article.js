@@ -54,19 +54,21 @@ class Article extends Component {
 
       <div className="contents-container  ">
         <div className="article-detail-container">
+          <div className="article-button-container">
+            <Link to={`/album/${albumId}/article/${articleId}/edit`}>
+              <button className="article-btn" style={{top:"10px", right:"40px"}} ><FontAwesomeIcon icon={['far', 'edit']}  size="lg"/></button> 
+            </Link>
 
-        <div className="article-button-container">
-
-          <Link to={`/album/${albumId}/article/${articleId}/edit`}>
-            <button className="article-btn" style={{top:"10px", right:"40px"}} ><FontAwesomeIcon icon={['far', 'edit']}  size="lg"/></button> 
-          </Link>
-
-          <button className="article-btn" style={{top:"10px", right:"0px"}} onClick={this.toggleHandler}><FontAwesomeIcon icon={['far', 'trash-alt']} size="lg" /></button>
-        </div>
+            <button className="article-btn" style={{top:"10px", right:"0px"}} onClick={this.toggleHandler}><FontAwesomeIcon icon={['far', 'trash-alt']} size="lg" /></button>
+          </div>
 
           { photo ? <div className="article-img-container"><img src={photo} alt="photo"  /> </div> : "" }
           <p>{note}</p>
-          <p>{ location && `At ${location}`} { time && time.split('T', 1) } { people && `with ${people}`}  </p>
+          <p>
+          { location &&  <span> <FontAwesomeIcon icon="map-marker-alt"/> { location } </span> }  
+          { time && time.split('T', 1) }  
+          { people && <span> <FontAwesomeIcon icon="user-friends" /> { people } </span> }  
+          </p>
         </div>
       </div>
       <NavbarDown />

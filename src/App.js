@@ -4,7 +4,7 @@ import { Switch } from 'react-router-dom';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { far } from '@fortawesome/free-regular-svg-icons';
-import { faSearch, faHome, faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faHome, faPlus, faTimes, faMapMarkerAlt, faUserFriends } from '@fortawesome/free-solid-svg-icons';
 
 import PrivateRoute from './components/PrivateRoute';
 import AnonRoute from './components/AnonRoute';
@@ -22,7 +22,7 @@ import EditAlbum from './pages/EditAlbum';
 import Profile from './pages/Profile';
 import Landing from './pages/Landing';
 
-library.add(far, faSearch, faPlus, faHome, faTimes);
+library.add(far, faSearch, faPlus, faHome, faTimes, faMapMarkerAlt, faUserFriends);
 
 class App extends Component {
 	render() {

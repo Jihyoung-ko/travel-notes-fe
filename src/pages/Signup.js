@@ -29,21 +29,24 @@ class Signup extends Component {
     return (
       <div>
         <Header title="Sign Up" buttonType="item" buttonName="BACK" />
+        
 
         <form onSubmit={this.handleFormSubmit} style={{marginTop:"150px"}}>
-          <label>Username:</label>
+          <h2 style={{marginBottom:"30px", lineHeight:"1.4"}}>Welcome to <br/>Travel Notes </h2>
           <input
             type="text"
             name="username"
             value={username}
             onChange={this.handleChange}
+            placeholder="Username"
           />
-          <label>Password:</label>
+          
           <input
             type="password"
             name="password"
             value={password}
             onChange={this.handleChange}
+            placeholder="*******"
           />
           <input type="submit" value="Signup" className="save-btn"/>
           <p style={{marginTop:"10px", textAlign:"center"}}>
