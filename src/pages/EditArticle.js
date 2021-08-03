@@ -70,7 +70,7 @@ class EditArticle extends Component {
             <textarea className="note-input" type="text" name="note" value={note} onChange={this.handelChange} placeholder="Write a note..."/>
             <input type="text" name="location" value={location} onChange={this.handelChange} placeholder="Add Place"/>
             <input type="text" name="people" value={people} onChange={this.handelChange} placeholder="Add People"/>
-            <input type="text" name="time" value={time} onChange={this.handleChange} placeholder="Change time" onFocus={e => (e.target.type = "date")} />
+            <input type="date" name="time" value={time} onChange={this.handleChange} />
             <button className="save-btn">Save</button>
           </form>
         </div>

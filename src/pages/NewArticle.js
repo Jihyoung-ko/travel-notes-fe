@@ -60,7 +60,7 @@ class NewArticle extends Component {
         <div className="contents-container">
           <form onSubmit={this.handleSubmit}>
             <textarea className="note-input" type="text" name="note" value={note} onChange={this.handleChange} placeholder="Write a note..." />
-            <input type="file" name="photo"  onChange={this.handleFileUpload} placeholder="Add Photo" />
+            <input type="file" name="photo" id="photo" onChange={this.handleFileUpload} placeholder="Add Photo"  />
             <input type="text" name="location" value={location} onChange={this.handleChange} placeholder="Add Place" />
             <input type="text" name="people" value={people} onChange={this.handleChange} placeholder="Add People" />
             <button className="save-btn">Save</button>

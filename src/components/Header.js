@@ -34,7 +34,7 @@ const Header = (props) => {
               return (
                 <div>
                   <input className="search-input" style={{width:"75%"}} type="search"  placeholder="Search..." onChange={onSearch}/>
-                  <input className="search-input" style={{width:"15%"}} type="date" onChange={onSearch} />
+                  <input className="search-input" style={{width:"14%", padding:"8px 0px"}} type="date" onChange={onSearch}/>
                 </div>  
               )
               
