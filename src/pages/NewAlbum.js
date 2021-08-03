@@ -48,7 +48,7 @@ class NewAlbum extends Component {
     const { title, startDate, endDate } = this.state;
     return(
       <div>
-        <Header buttonType="edit" title="New Album" buttonName="CANCEL" goBack={this.goBackHandler} />
+        <Header buttonType="edit" title="New Album" buttonName="Cancel" goBack={this.goBackHandler} />
         <div className="contents-container">
           <form onSubmit={this.handleSubmit} className="newAlbum-form">
             <input className="newAlbum-input" type="text" name="title" value={title} onChange={this.handleChange} placeholder="Trip name" />

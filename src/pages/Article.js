@@ -46,9 +46,12 @@ class Article extends Component {
     const { album, showModal } = this.state;
     const { photo, note, location, time, people } = this.state.article;
     const { albumId, articleId } = this.props.match.params;
+    const timeformat = new Date(time).toLocaleDateString()  + ' ' + new Date(time).getHours() + ':' + new Date(time).getMinutes()
+    const backIcon = <FontAwesomeIcon icon="chevron-left" size="lg"/>
+
     return (
     <div>
-      <Header title={album.title} buttonType="item" buttonName="BACK" goBack={this.goBackHandler} />
+      <Header title={album.title} buttonType="item" buttonName={backIcon} goBack={this.goBackHandler} />
 
       { showModal && <DeleteModal onClose={this.toggleHandler} onDelete={this.deleteArticleHandler} />}
 
@@ -66,9 +69,12 @@ class Article extends Component {
           <p>{note}</p>
           <p>
           { location &&  <span> <FontAwesomeIcon icon="map-marker-alt"/> { location } </span> }  
-          { time && time.split('T', 1) }  
+          
           { people && <span> <FontAwesomeIcon icon="user-friends" /> { people } </span> }  
+
+          { time && <span className="article-text-time"> <FontAwesomeIcon icon={['far', 'clock']} /> {timeformat} </span>}  
           </p>
+
         </div>
       </div>
       <NavbarDown />

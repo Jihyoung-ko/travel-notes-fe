@@ -11,20 +11,22 @@ class EditArticle extends Component {
       photo:"",
       note:"",
       location:"",
-      people:""
+      people:"",
+      time:""
     }
   }
 
   async componentDidMount() {
     const { albumId, articleId } = this.props.match.params;
     const data = await apiClient.getAlbumAndArticle(albumId,articleId);
-    const { photo, note, location, people } = data[1];
+    const { photo, note, location, people, time } = data[1];
     this.setState({
       album: data[0],
       photo,
       note,
       location,
-      people
+      people,
+      time
     })
   }
 
@@ -57,10 +59,10 @@ class EditArticle extends Component {
   }
 
   render(){
-    const { album, photo, note, location,  people } = this.state;
+    const { photo, note, location,  people, time } = this.state;
     return (
       <div>
-        <Header buttonType="edit" title={album.title} buttonName="CANCEL"  goBack={this.goBackHandler} />
+        <Header buttonType="edit" title="Edit" buttonName="Cancel"  goBack={this.goBackHandler} />
         <div className="contents-container">
           <form onSubmit={this.handleSubmit}>
             { photo &&<div className="edit-article-img-container"><img src={photo} alt="photo" /> </div> }
@@ -68,6 +70,7 @@ class EditArticle extends Component {
             <textarea className="note-input" type="text" name="note" value={note} onChange={this.handelChange} placeholder="Write a note..."/>
             <input type="text" name="location" value={location} onChange={this.handelChange} placeholder="Add Place"/>
             <input type="text" name="people" value={people} onChange={this.handelChange} placeholder="Add People"/>
+            <input type="text" name="time" value={time} onChange={this.handleChange} placeholder="Change time" onFocus={e => (e.target.type = "date")} />
             <button className="save-btn">Save</button>
           </form>
         </div>

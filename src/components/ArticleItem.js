@@ -7,7 +7,7 @@ const ArticleItem = ({ article }) => {
       { photo && <div className="article-item-photo"><img src={photo} alt="photo" /> </div> }
       <div className="article-item-text flex">
         <p>{note}</p>
-        <p style={{fontSize:"0.8em", marginTop:"10px", color:"grey"}}>{location}  { time && time.split('T', 1) }  {people}</p>
+        <p style={{fontSize:"0.8em", marginTop:"10px", color:"grey"}}>{location}  {people} { time && new Date(time).toLocaleDateString() }</p>
       </div>
       
     </div>

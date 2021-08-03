@@ -32,11 +32,11 @@ class Search extends Component {
 
   render() {
     const { query, articles } = this.state;
-    const filteredArticle = articles.filter(article => article.note?.toLowerCase().includes(query.toLowerCase()) || article.people?.toLowerCase().includes(query.toLowerCase()) || article.location?.toLowerCase().includes(query.toLowerCase()) ) ;
-
+    const filteredArticle = articles.filter(article => article.note?.toLowerCase().includes(query.toLowerCase()) || article.people?.toLowerCase().includes(query.toLowerCase()) || article.location?.toLowerCase().includes(query.toLowerCase()) || article.time?.split('T', 1).includes(query) ) ;
+    
     return(
       <div>
-        <Header buttonType="search" buttonName="CANCEL" onSearch={this.searchHandler} goBack={this.goBackHandler} />
+        <Header buttonType="search" buttonName="Cancel" onSearch={this.searchHandler} goBack={this.goBackHandler} />
         <div className="contents-container" style={{marginTop:"85px"}}>
           {query ? filteredArticle.map(article =>  <Link to={`/album/${article.album}/article/${article._id}`} key={article._id}><ArticleItem   article={article} /> </Link>) : "" }
         </div>

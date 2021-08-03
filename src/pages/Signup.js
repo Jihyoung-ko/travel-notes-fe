@@ -13,6 +13,10 @@ class Signup extends Component {
   };
   }
 
+  componentDidMount() {
+    this.props.cleanError();
+  }
+
   handleFormSubmit = event => {
     event.preventDefault();
     const { username, password } = this.state;

@@ -17,7 +17,7 @@ const Header = (props) => {
   const renderLeftButton = () => {
       if(props.isLoggedIn){
           if(buttonType === "home"){
-              return <Link to={'/profile'}><button className="header-btn"><FontAwesomeIcon icon={['far', 'user-circle']} size="2x" /></button></Link>
+              return <Link to={'/profile'}><button className="header-btn"><FontAwesomeIcon icon={['far', 'user-circle']} size="lg" /></button></Link>
           }else{
               return <button className="header-btn" onClick={goBackHandler}>{buttonName}</button>
           }
@@ -26,11 +26,18 @@ const Header = (props) => {
   }
 
   const renderRightButton = () => {
+   
       if(props.isLoggedIn){
           if(buttonType !== "search"){
-              return <Link to={'/search'}><button className="header-btn" style={{fontSize:"1.1em"}} ><FontAwesomeIcon icon="search" size="lg"/></button> </Link>
+              return <Link to={'/search'}><button className="header-btn"  ><FontAwesomeIcon icon="search" size="lg"/></button> </Link>
           }else{
-              return <input className="search-input" type="search"  placeholder="Search..." onChange={onSearch}/>
+              return (
+                <div>
+                  <input className="search-input" style={{width:"75%"}} type="search"  placeholder="Search..." onChange={onSearch}/>
+                  <input className="search-input" style={{width:"15%"}} type="date" onChange={onSearch} />
+                </div>  
+              )
+              
           }
       }
 

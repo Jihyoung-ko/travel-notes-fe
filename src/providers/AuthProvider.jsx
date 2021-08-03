@@ -15,6 +15,7 @@ export const withAuth = (Comp) => {
               isLoggedOut={authProvider.isLoggedOut}
               error={authProvider.error}
               user={authProvider.user}
+              cleanError={authProvider.cleanError}
               logout={authProvider.logout}
               login={authProvider.login} 
               signup={authProvider.signup} 
@@ -97,6 +98,10 @@ class AuthProvider extends Component {
     }
   }
 
+  cleanError = () => {
+    this.setState({error:false})
+  }
+
   logout = async () => {
     try {
       await apiClient.logout()
@@ -119,6 +124,7 @@ class AuthProvider extends Component {
           isLoggedOut: status === 'loggedOut',
           error,
           user,
+          cleanError: this.cleanError,
           login: this.login, 
           signup: this.signup,
           logout: this.logout }}>

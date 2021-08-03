@@ -51,6 +51,7 @@ h2 {
   border: none;
   color: white;
   margin-top: 5px;
+  font-size: 1.1em
 }
 
 .add-btn {
@@ -221,6 +222,12 @@ input:focus {
   max-width: 350px;
 }
 
+.article-text-time {
+  float: right;
+  color: grey;
+  font-size: 0.9em
+}
+
 .article-item-text {
   overflow: hidden;
   flex-direction: column;
@@ -244,9 +251,8 @@ input:focus {
 }
 
 .search-input {
-  width: 97%;
-  margin-left: 5px;
-  padding: 5px 10px;
+  margin: 5px;
+  padding: 10px;
   border: none;
   border-radius: 10px;
 }

@@ -48,11 +48,11 @@ class Album extends Component {
   render() {
     const { album, articles, showModal } = this.state;
     const { id } = this.props.match.params;
-    
+    const backIcon = <FontAwesomeIcon icon="chevron-left" size="lg"/>
     
     return(
       <div>
-        <Header title={ album.title } onToggle={this.toggleHandler} buttonType="item" buttonName="BACK" goBack={this.goBackHandler} />
+        <Header title={ album.title } onToggle={this.toggleHandler} buttonType="item" buttonName={backIcon} goBack={this.goBackHandler} />
         { showModal && <DeleteModal onClose={this.toggleHandler} onDelete={this.deleteAlbumHandler} />}
         
         <div className="contents-container" style={{marginBottom:"75px"}}>

@@ -4,7 +4,7 @@ import { Switch } from 'react-router-dom';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { far } from '@fortawesome/free-regular-svg-icons';
-import { faSearch, faHome, faPlus, faTimes, faMapMarkerAlt, faUserFriends } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faHome, faPlus, faTimes, faMapMarkerAlt, faUserFriends, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 import PrivateRoute from './components/PrivateRoute';
 import AnonRoute from './components/AnonRoute';
@@ -21,8 +21,9 @@ import EditArticle from './pages/EditArticle';
 import EditAlbum from './pages/EditAlbum';
 import Profile from './pages/Profile';
 import Landing from './pages/Landing';
+import NotFound from "./pages/NotFound";
 
-library.add(far, faSearch, faPlus, faHome, faTimes, faMapMarkerAlt, faUserFriends);
+library.add(far, faSearch, faPlus, faHome, faTimes, faMapMarkerAlt, faUserFriends, faChevronLeft);
 
 class App extends Component {
 	render() {
@@ -45,6 +46,7 @@ class App extends Component {
 					<PrivateRoute path="/search" component={Search} />
 					<PrivateRoute path="/profile" component={Profile} />
 					<AnonRoute exact path="/" component={Landing} />
+					<PrivateRoute component={NotFound} />
 				</Switch>
 			</div>
 		);

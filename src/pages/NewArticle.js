@@ -14,6 +14,7 @@ class NewArticle extends Component {
     this.state = {
       note:"",
       photo:"",
+      time:{},
       location:"",
       people:"",
       album: id.toString(),
@@ -30,7 +31,8 @@ class NewArticle extends Component {
 
   handleChange = (e) => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
+      time: new Date()
     })
   }
 
@@ -54,7 +56,7 @@ class NewArticle extends Component {
   
     return(
       <div>
-        <Header buttonType="edit" title="New Article" buttonName="CANCEL"  goBack={this.goBackHandler} />
+        <Header buttonType="edit" title="New Article" buttonName="Cancel"  goBack={this.goBackHandler} />
         <div className="contents-container">
           <form onSubmit={this.handleSubmit}>
             <textarea className="note-input" type="text" name="note" value={note} onChange={this.handleChange} placeholder="Write a note..." />
