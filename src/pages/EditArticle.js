@@ -37,7 +37,7 @@ class EditArticle extends Component {
     this.props.history.push(`/album/${albumId}/article/${articleId}`);
   }
 
-  handelChange = (e) => {
+  handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
     })
@@ -67,9 +67,9 @@ class EditArticle extends Component {
           <form onSubmit={this.handleSubmit}>
             { photo &&<div className="edit-article-img-container"><img src={photo} alt="photo" /> </div> }
             <input type="file" name="photo"  onChange={this.handleFileUpload} placeholder="Change Photo" />
-            <textarea className="note-input" type="text" name="note" value={note} onChange={this.handelChange} placeholder="Write a note..."/>
-            <input type="text" name="location" value={location} onChange={this.handelChange} placeholder="Add Place"/>
-            <input type="text" name="people" value={people} onChange={this.handelChange} placeholder="Add People"/>
+            <textarea className="note-input" type="text" name="note" value={note} onChange={this.handleChange} placeholder="Write a note..."/>
+            <input type="text" name="location" value={location} onChange={this.handleChange} placeholder="Add Place"/>
+            <input type="text" name="people" value={people} onChange={this.handleChange} placeholder="Add People"/>
             <input type="date" name="time" value={time} onChange={this.handleChange} />
             <button className="save-btn">Save</button>
           </form>
