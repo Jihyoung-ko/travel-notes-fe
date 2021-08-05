@@ -6,6 +6,7 @@ import apiClient from "../lib/apiClient";
 import { withAuth } from '../providers/AuthProvider';
 import AlbumItem from "../components/AlbumItem";
 import Header from "../components/Header";
+import Loading  from '../components/Loading';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class Home extends Component {
@@ -62,7 +63,8 @@ class Home extends Component {
                 <AlbumItem  album={album} onDeleteAlbum = {this.deleteAlbumHandler} />
               </Link>
             </div>
-          })}</> : <p>Loading...</p>}
+          })}
+          </> : <Loading />}
         </div>
       </div>
     )

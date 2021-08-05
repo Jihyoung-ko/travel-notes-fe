@@ -6,6 +6,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { faSearch, faHome, faPlus, faTimes, faMapMarkerAlt, faUserFriends, faChevronLeft, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 
+import Loading from './components/Loading';
 import PrivateRoute from './components/PrivateRoute';
 import AnonRoute from './components/AnonRoute';
 import Signup from './pages/Signup';
@@ -29,7 +30,7 @@ class App extends Component {
 	render() {
 		const { isLoading } = this.props;
 		if (isLoading) {
-			return <div>loading ... </div>;
+			return <Loading />;
 		}
 		return (
 			<div className="container">
